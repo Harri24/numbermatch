@@ -1,13 +1,11 @@
 import React from 'react';
-import '../Counters.css'
-import Buttons from './Buttons';
+import '../Counters.css';
 
 export default class Counters extends React.Component{
     constructor(props) {
         super(props)
         this.counterArray = [];
         this.generateCounters();
-        this.state = {};
         this.tiles = this.createTiles()
     }
 
@@ -18,35 +16,36 @@ export default class Counters extends React.Component{
         return this.counterArray;
     }
 
-    storeValue(val){
-        this.setState({currentValue: val})
-    }
-
     createTiles() {
         let html = [];
         let set = new Set(html)
-        for (let i = 0; i < 1; i++) {
+
             let randomCounter = this.counterArray[Math.floor(Math.random() * this.counterArray.length)];
 
+            ;
 
             set.add(
-                // <div value={randomCounter.Value} callback={(val) => this.storeValue(val)}/>
-                <div className="counter-buttons">
+                <div className="counter-buttons" >
                     <div className="counter-buttons-val">
                         {randomCounter.Value}
                     </div>
                 </div>
             )
-        }
+        
+        this.state = { value: randomCounter.Value}
+        console.log(this.state.value);
         return set;
     }
 
-    
+    returnStateValue() {
+        let value = this.state.value;
+        return value;
+    }
 
     render() {
         return (
             <>
-            {this.state.currentValue}
+            
                 <div className="counter-container">
                     {this.tiles}
                 </div>

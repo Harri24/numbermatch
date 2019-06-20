@@ -2,6 +2,13 @@
     /* width: 100%; */
     margin-left: 22%;
     margin-right: 22%;
+    min-width: 750px;
+    max-width: 1000px;
+}
+
+body {
+    /* background-image: url('https://media.giphy.com/media/1zhHiGwQiu2CaGj1uE/giphy.gif'); */
+    background-size: 100%;
 }
 
 h1 {
