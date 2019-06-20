@@ -1,5 +1,6 @@
 import React from 'react';
 import "../Grid.css"
+import Buttons from './Buttons'
 
 export default class Grid extends React.Component{
     constructor(props) {
@@ -23,13 +24,14 @@ export default class Grid extends React.Component{
 
 
             html.push(
-                <button className="grid-button">
-                    <div className="grid-button-val">
-                    {
-                        randomObj.Value
-                    }
-                    </div>
-                </button>
+                <Buttons value={randomObj.Value} callback={(val) => this.storeValue(val)}/>
+                // <button className="grid-button">
+                //     <div className="grid-button-val">
+                //     {
+                //         randomObj.Value
+                //     }
+                //     </div>
+                // </button>
             )
         }
         return html;

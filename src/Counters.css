@@ -22,3 +22,7 @@
     font-weight: bold; 
     font-size: 2em; 
 }
+
+.button-activated{
+    background-color: red;
+}
