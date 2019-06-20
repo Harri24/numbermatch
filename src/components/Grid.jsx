@@ -21,13 +21,6 @@ export default class Grid extends React.Component{
         return this.objectArray;
     }
 
-    storeValue(val) {
-        this.currentNumber = val;
-
-        return this.currentNumber;
-    }
-
-
 
     createTiles() {
         let html = [];
@@ -38,7 +31,7 @@ export default class Grid extends React.Component{
 
             html.push(
                 <>
-                <Buttons value={randomObj.Value} callback={(val) => this.storeValue(val)}
+                <Buttons value={randomObj.Value} callback={(val) => this.props.callback(val)}
                 />
                 </>
                 // <Buttons value={randomObj.Value} callback={(val) => this.storeValue(val)}/>

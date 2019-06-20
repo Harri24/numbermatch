@@ -22,7 +22,6 @@ export default class Counters extends React.Component{
 
             let randomCounter = this.counterArray[Math.floor(Math.random() * this.counterArray.length)];
 
-            ;
 
             set.add(
                 <div className="counter-buttons" >
@@ -32,15 +31,16 @@ export default class Counters extends React.Component{
                 </div>
             )
         
-        this.state = { value: randomCounter.Value}
-        console.log(this.state.value);
+        this.props = { value: randomCounter.Value}
+        console.log(this.props.value);
         return set;
     }
 
-    returnStateValue() {
-        let value = this.state.value;
-        return value;
-    }
+
+    // returnStateValue() {
+    //     let value = this.props.value;
+    //     return value;
+    // }
 
     render() {
         return (

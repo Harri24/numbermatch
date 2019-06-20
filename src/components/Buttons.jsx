@@ -17,6 +17,7 @@ export default class Buttons extends React.Component {
     getNumber() {
         this.currentNumber = this.props.value;
         console.log(this.currentNumber);
+        this.props.callback(this.currentNumber);
     }
 
     
