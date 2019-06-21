@@ -2,9 +2,7 @@ import React from 'react';
 import Grid from './Grid';
 import Counters from './Counters';
 import '../Game.css';
-import Compare from '../helpers/Compare';
 import _ from 'lodash';
-import { statement } from '@babel/template';
 
 
 export default class Game extends React.Component{
@@ -52,9 +50,8 @@ export default class Game extends React.Component{
     }
 
     counter() {
-        let gridArray = this.state.gridArray;
-        let counterArray = gridArray.filter(x => x.Matched)
-        this.setState({score: counterArray.length});
+        let currentCount = this.state.gridArray.filter(x => x.Matched).length;
+        this.setState({score: currentCount});
     }
 
     checkNumber(numberClicked) {
@@ -66,10 +63,8 @@ export default class Game extends React.Component{
                     x.Matched = true;
                 }
             })
-
             this.counter();
             this.getNextNumber();
-
             this.setState({
                 gridArray: this.state.gridArray
             })
