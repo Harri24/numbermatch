@@ -14,11 +14,10 @@ export default class Game extends React.Component{
         this.counterArray = [];
         let initialGridArray = this.generateNumbers();
         this.getNextNumber();
-        this.counter = this.counter.bind(this);
         this.state = {
             gridArray: initialGridArray,
             currentNumber: this.getFirstNumber(),
-            score: null
+            score: 0
         }
         this.checkNumber = this.checkNumber.bind(this);
     }
@@ -54,10 +53,7 @@ export default class Game extends React.Component{
 
     counter() {
         let gridArray = this.state.gridArray;
-        let counterArray = gridArray.map(x => {
-            return x.Matched === true;
-        })
-        console.log(counterArray);
+        let counterArray = gridArray.filter(x => x.Matched)
         this.setState({score: counterArray.length});
     }
 
@@ -71,12 +67,12 @@ export default class Game extends React.Component{
                 }
             })
 
+            this.counter();
             this.getNextNumber();
 
             this.setState({
                 gridArray: this.state.gridArray
             })
-            // this.counter();
         }
     }
 
