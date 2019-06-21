@@ -12,7 +12,7 @@ export default class Buttons extends React.Component {
 
     matchedCheck() {
         if(this.props.value === this.counterNumber){
-            this.state = ({activated: true});
+            this.setState({activated: true});
         } else {
             return;
         }
