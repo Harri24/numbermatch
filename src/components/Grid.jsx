@@ -16,7 +16,7 @@ export default class Grid extends React.Component{
 
             html.push(
                 <>
-                <Buttons value={randomObj.Value} counterNumber={this.props.counterNumber} objectArray={randomObj} callback={(val) => this.props.callback(val)}
+                <Buttons randomObj={randomObj} counterNumber={this.props.counterNumber} objectArray={randomObj} checkNumber={this.props.checkNumber} callback={(val) => this.props.callback(val)}
                 />
                 </>
             )

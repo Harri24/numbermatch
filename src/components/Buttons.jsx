@@ -6,32 +6,26 @@ export default class Buttons extends React.Component {
         this.state = {
             activated: false
         }
-        this.matchedCheck();
-        this.counterNumber = this.props.counterNumber
+        this.matchedCheck = this.matchedCheck.bind(this);
     }
 
     matchedCheck() {
-        if(this.props.value === this.counterNumber){
-            this.setState({activated: true});
-        } else {
-            return;
-        }
+        this.props.checkNumber(this.props.randomObj.Value);
     }
 
     getNumber() {
-        console.log(this.props.value);
+        console.log(this.props.randomObj.Value);
         console.log('Counter num is:', this.counterNumber)
     }
 
-    
     render(){
         return (
-            <button className={`grid-button grid-button-val ${this.state.activated ? 'button-activated' : ''}`} onClick={() => {this.matchedCheck(); this.getNumber()}}>
-                    <div className="grid-buttons-val">
-                    {
-                        this.props.value
-                    }
-                    </div>
+            <button className="grid-button">
+                <div className={`grid-button-val ${this.props.randomObj.Matched ? 'button-activated' : ''}`} onClick={this.matchedCheck}>
+                {
+                    this.props.randomObj.Value
+                }
+                </div>
             </button>
         )
     }
