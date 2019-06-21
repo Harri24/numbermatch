@@ -14,9 +14,11 @@ export default class Game extends React.Component{
         this.counterArray = [];
         let initialGridArray = this.generateNumbers();
         this.getNextNumber();
+        this.counter = this.counter.bind(this);
         this.state = {
             gridArray: initialGridArray,
-            currentNumber: this.getFirstNumber()
+            currentNumber: this.getFirstNumber(),
+            score: null
         }
         this.checkNumber = this.checkNumber.bind(this);
     }
@@ -50,9 +52,14 @@ export default class Game extends React.Component{
         this.setState({score: value})
     }
 
-    // counter() {
-    //     console.log('Current Score:',);
-    // }
+    counter() {
+        let gridArray = this.state.gridArray;
+        let counterArray = gridArray.map(x => {
+            return x.Matched === true;
+        })
+        console.log(counterArray);
+        this.setState({score: counterArray.length});
+    }
 
     checkNumber(numberClicked) {
         if (numberClicked === this.state.currentNumber) {
@@ -77,6 +84,7 @@ export default class Game extends React.Component{
         return (
             <div className="container">
                 <h1>Welcome to Number Match!</h1>
+                <h2>Current score: {this.state.score}</h2>
                 <Grid callback={(val) => this.saveScore(val)} objectArray={this.state.gridArray} counterNumber={this.state.currentNumber} checkNumber={this.checkNumber}></Grid>
                 <aside>
                     <Counters currentCounter={this.state.currentNumber}></Counters>
